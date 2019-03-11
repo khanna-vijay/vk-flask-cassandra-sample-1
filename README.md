@@ -30,6 +30,59 @@ This code is used to setup a sample Read Write application
     flask run
     
 **Install Cassandra Driver**
+
     pip install cassandra-driver              //Takes some time..
+
+
+**On Cassandra Server**
+
+    sudo add-apt-repository ppa:webupd8team/java
+    sudo apt-get update
+    sudo apt-get install oracle-java8-set-default -y
+    echo "deb http://www.apache.org/dist/cassandra/debian 36x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+    curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
+    sudo apt-get install cassandra
+    nodetool status
+
+    sudo apt install python-pip
+    pip install cassandra-driver
+    export CQLSH_NO_BUNDLED=true
+    
+    cqlsh
+    DESC keyspaces
+    SHOW VERSION
+    
+    CREATE KEYSPACE first_key_space WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 1};
+    use first_key_space;
+    CREATE TABLE emp_table_vk(
+        emp_id int PRIMARY KEY,
+        emp_name text,
+        emp_city text,
+        emp_sal varint,
+        emp_phone varint
+    );
+    select * from emp_table_vk;
+    ALTER TABLE emp_table_vk ADD emp_email text;
+    BEGIN BATCH
+    
+    INSERT INTO emp_table_vk (emp_id, emp_city, emp_name, emp_phone, emp_sal) values(1 ,'Mumbai','Amit',1111999931, 44400);
+    APPLY BATCH;
+    
+    select * from emp_table_vk ;
+    
+    
+    
+ **On Flask Server**
+ ___________________
+ 
+
+     
+
+
+
+
+
+
+    
 
 
