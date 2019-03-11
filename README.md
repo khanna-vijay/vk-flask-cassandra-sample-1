@@ -74,8 +74,25 @@ This code is used to setup a sample Read Write application
     
  **On Flask Server**
  ___________________
- 
+    
+    git clone https://github.com/vijay-khanna/vk-flask-cassandra-sample-1.git
+    mv vk-flask-cassandra-sample-1 flask-cassandra
+    cd flask-cassandra/
+    source venv/bin/activate
+    pip install --upgrade pip
+    ###venv> python -m pip uninstall pip
+    
+    pip install --upgrade cython
+    
+    pip install flask
+    pip install cassandra-driver
+    pip install flask_session
+    
 
+    export FLASK_APP=TestCass.py
+    flask run
+
+     sudo apt-get remove python3        //python3 creates issues sometimes here. 
      
 
 
