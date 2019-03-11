@@ -70,7 +70,14 @@ This code is used to setup a sample Read Write application
     
     select * from emp_table_vk ;
     
+    //After Testing Standalone, point Cassandra to Physical localIP in the file  /etc/cassandra/cassandra.yaml
+                rpc_address: 10.10.20.198
+    service cassandra restart
+    Test on Cassandra server.
+                cqlsh 10.10.20.198
+                
     
+
     
  **On Flask Server**
  ___________________
