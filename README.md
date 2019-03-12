@@ -1,31 +1,36 @@
 # vk-flask-cassandra-sample-1
 This code is used to setup a sample Read Write application
 
-**On Application Server - Ubuntu 18 (AWS AMI) . Install Python, Pip, Flask ::
+**On Application Server - Ubuntu 16 (AWS AMI) . Install Python, Pip, Flask ::
+    
     sudo apt update
-
-    sudo apt-get install python2.7
-    sudo apt install python
+    #sudo apt-get remove python3
+    #sudo apt-get install python2.7
+    sudo apt install python -y
+    
     
 #sudo apt install python3-pip
     
-    sudo apt install python-pip
+    sudo apt install python-pip -y
     pip --version
+    pip install --upgrade pip
     sudo pip install --upgrade virtualenv 
     pip install Flask
-
+    sudo apt install python-flask -y
 **Test Sample Flask App . File Name : hello.py  runs on all IP's at port 8081 **
 
+    cat <<'EOF' >hello.py
     from flask import Flask
     app = Flask(__name__)
     @app.route('/')
     def hello_world():
         return 'Hello World!'
     app.run(host="0.0.0.0", port=8081)
+    EOF
 
 **Install Flask**
     #sudo apt install python3-flask
-    sudo apt install python-flask
+    
     export FLASK_APP=hello
     flask run
     
@@ -93,15 +98,19 @@ This code is used to setup a sample Read Write application
     
     pip install flask
     pip install cassandra-driver
+    #pip install cassandra-driver --user
+    
     pip install flask_session
     
 
     export FLASK_APP=TestCass.py
     flask run
 
-     sudo apt-get remove python3        //python3 creates issues sometimes here. 
-     
-
+    #sudo apt-get remove python3        //python3 creates issues sometimes here. 
+ **Edit the Connection strings in Flask .py files to point to cassandra      **
+ 
+ 
+service cassandra restart
 
 
 
